@@ -3,14 +3,9 @@ console.log('hello world');
 class Hello {
   constructor() {}
 
-  save() {
-
-
-                                        }
+  save() {}
 }
 
 export const sum = (a: number, b: number): number => {
-  return a;
-}
-
-
+  return a + b;
+};
