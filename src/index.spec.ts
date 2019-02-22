@@ -1,5 +1,20 @@
-import { sum } from './index';
+import supertest from 'supertest';
+import app from './server';
+import { doTheTitle } from './utils';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+describe('Server', () => {
+  describe(doTheTitle('GET /'), () => {
+    test('It should response the GET method', async () => {
+      const response: any = await supertest(app)
+        .get('/')
+        .set('Accept', 'application/json');
+
+      const { headers, statusCode, text, body } = response;
+
+      expect(headers['content-type']).toBe('application/json; charset=utf-8');
+      expect(headers['content-length']).toBe('26');
+      expect(statusCode).toBe(200);
+      expect(body).toEqual({ message: 'Hello World!' });
+    });
+  });
 });
