@@ -1,10 +1,9 @@
-import { doTheTitle } from '../utils';
 import * as App from './app';
 import * as db from './db';
 
 jest.mock('./db');
 
-describe(doTheTitle('Singup /'), () => {
+describe('Singup /', () => {
   test('It should call "saveUser" with "User" object', () => {
     const email = 'test@test.ai';
     const password = '123';

@@ -5,17 +5,17 @@ app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
 });
 
-// const { createServer } = http;
+const { createServer } = http;
 
-// class Hello {
-//   constructor() {}
+class Hello {
+  constructor() {}
 
-//   save() {}
-// }
+  save() {}
+}
 
-// export const sum = (a: number, b: number): number => {
-//   return a + b;
-// };
+export const sum = (a: number, b: number): number => {
+  return a + b;
+};
 
 // const server = createServer((req, res) => {
 //   res.end('hello world');

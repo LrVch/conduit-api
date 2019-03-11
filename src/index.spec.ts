@@ -1,9 +1,8 @@
 import supertest from 'supertest';
 import app from './server';
-import { doTheTitle } from './utils';
 
 describe('Server', () => {
-  describe(doTheTitle('GET /'), () => {
+  describe('GET /', () => {
     test('It should response the GET method', async () => {
       const response: any = await supertest(app)
         .get('/')
