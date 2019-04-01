@@ -52,7 +52,7 @@
         "no-debugger": true,
         "no-duplicate-super": true,
         "no-empty": false,
-        "no-empty-interface": true,
+        "no-empty-interface": false,
         "no-eval": true,
         "no-inferrable-types": [
             true,
@@ -124,6 +124,18 @@
                 }
             }
         ],
-        "arrow-parens": [true, "ban-single-arg-parens"]
+        "arrow-parens": [
+            true,
+            "ban-single-arg-parens"
+        ],
+        "max-classes-per-file": false,
+        "no-var-requires": false,
+        "no-submodule-imports": false
+    },
+    "linterOptions": {
+        "exclude": [
+            "*.json",
+            "**/*.json"
+        ]
     }
 }

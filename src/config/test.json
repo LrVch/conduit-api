@@ -1,0 +1,16 @@
+{
+  "port": 3000,
+  "mongoose": {
+    "uri": "mongodb://localhost:27017/todo-test",
+    "options": {
+      "useNewUrlParser": true,
+      "useCreateIndex": true,
+      "keepAlive": true
+    }
+  },
+  "jwt": {
+    "secret": "placeholder-secretKey",
+    "algorithm": "HS256",
+    "secret_separator": ":"
+  }
+}

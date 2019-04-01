@@ -1,0 +1,3 @@
+{
+  "environments": ["development", "prodaction", "test", "staging"]
+}
