@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import passport from 'passport';
 import config from './config';
 import { IError } from './models';
+import routes from './routes';
 
 const isProduction = config.get('NODE_ENV') === 'production';
 
@@ -31,7 +32,7 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-// router here
+app.use(routes);
 
 app.use(
   (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -54,7 +55,8 @@ if (!isProduction) {
       res.json({
         errors: {
           message: err.message,
-          error: err
+          error: err,
+          stack: err.stack
         }
       });
     }
