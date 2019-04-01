@@ -1,7 +1,7 @@
 {
   "port": 3000,
   "mongoose": {
-    "uri": "mongodb://localhost:27017/todo",
+    "uri": "mongodb://localhost:27017/conduit",
     "options": {
       "useNewUrlParser": true,
       "useCreateIndex": true,
@@ -9,7 +9,7 @@
     }
   },
   "jwt": {
-    "secret": "placeholder-secretKey",
+    "secret": "secret",
     "algorithm": "HS256",
     "secret_separator": ":"
   }

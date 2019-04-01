@@ -22,4 +22,20 @@ nconf.file('default', join(__dirname, 'default.json'));
 
 nconf.set('env', environment);
 
+if (environment === 'production') {
+  const secret = nconf.get('SECRET');
+  const uri = nconf.get('MONGODB_URI');
+
+  if (!secret) {
+    throw new Error(`Secret should be defined!`);
+  }
+
+  if (!uri) {
+    throw new Error(`Uri should be defined!`);
+  }
+
+  nconf.set('jwt:secret', secret);
+  nconf.set('mongoose:uri', uri);
+}
+
 export default nconf;
