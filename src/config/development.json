@@ -1,7 +1,7 @@
 {
   "port": 3000,
   "mongoose": {
-    "uri": "mongodb://localhost:27017/conduit",
+    "uri": "mongodb://localhost:27017/conduit-dev",
     "options": {
       "useNewUrlParser": true,
       "useCreateIndex": true,

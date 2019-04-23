@@ -15,7 +15,7 @@ function dropDatabase() {
 
 function createUsers(count: number = 5) {
   return new Promise(async (res: any, rej) => {
-    await import('../../models/user');
+    await import('../../models/app/User');
 
     const users = Array.from({ length: count }).map((elem, i) =>
       new mongoose.models.UserModel({ username: `${i}-user` }).save()

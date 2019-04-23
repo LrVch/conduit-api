@@ -2,15 +2,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import errorhandler from 'errorhandler';
 import express from 'express';
-import session from 'express-session';
 import * as http from 'http';
 import createError from 'http-errors';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
-import passport from 'passport';
 import config from './config';
+import * as passport from './libs/passport';
 import { IError } from './models';
 import routes from './routes';
+
+passport.init();
 
 const isProduction = config.get('NODE_ENV') === 'production';
 
@@ -25,8 +26,6 @@ app.use(bodyParser.json());
 
 app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
-
-// app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 if (!isProduction) {
   app.use(errorhandler());
