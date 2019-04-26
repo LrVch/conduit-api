@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { User } from '../models';
+import UserService from '../services/UserService';
 
 export const init = () => {
   passport.use(
@@ -9,15 +9,18 @@ export const init = () => {
         usernameField: 'user[email]',
         passwordField: 'user[password]'
       },
-      (email, password, done) => {
-        User.findOne({ email })
-          .then(user => {
-            if (!user || !user.validPassword(password)) {
-              return done(null, false);
-            }
-            return done(null, user);
-          })
-          .catch(done);
+      async (email, password, done) => {
+        try {
+          const user = await UserService.findByEmail(email);
+
+          if (!user || !user.validPassword(password)) {
+            return done(null, false);
+          }
+
+          return done(null, user);
+        } catch (e) {
+          done(e);
+        }
       }
     )
   );

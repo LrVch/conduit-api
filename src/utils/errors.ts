@@ -5,3 +5,15 @@ export const arrayToObjectErrors = <T>(errors: T[]) => ({
     return (obj = { ...obj, ...err });
   }, {})
 });
+
+export const formatValidationErrors = (errors: any) => {
+  return {
+    errors: Object.keys(errors).reduce(
+      (errs: { [key: string]: any }, key: any) => {
+        errs[key] = errors[key].message;
+        return errs;
+      },
+      {}
+    )
+  };
+};

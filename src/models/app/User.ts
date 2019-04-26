@@ -4,7 +4,7 @@ import { Document, Model, Schema } from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
 import config from '../../config';
 import mongoose from '../../libs/mongoose';
-import { IUser } from '../interfeises';
+import { IUser, IValidationError } from '../interfeises';
 
 const { model } = mongoose;
 const secret = config.get('jwt:secret');
@@ -18,6 +18,7 @@ export interface IUserModel extends IUser, Document {
     bio: string;
     image: string;
   };
+  generateJWT(): string;
 }
 
 export interface IUserDocument extends Document {
@@ -59,7 +60,21 @@ const UserSchema = new Schema(
     // ],
     password: {
       type: String,
-      required: [true, "can't be blank"]
+      required: [true, "can't be blank"],
+      validate: [
+        {
+          validator: (v: any) => {
+            return v.length > 5;
+          },
+          msg: `length should be at least 6.`
+        },
+        {
+          validator: (v: any) => {
+            return v.length < 20;
+          },
+          msg: `length shouldn't be greater than 20.`
+        }
+      ]
     },
     salt: String
   },
@@ -83,8 +98,6 @@ UserSchema.pre('save', function(next) {
     return next();
   }
 
-  console.log('gena petrovich');
-
   // generate a salt and hash a password
   try {
     user.salt = crypto.randomBytes(16).toString('hex');
@@ -93,6 +106,7 @@ UserSchema.pre('save', function(next) {
       .toString('hex');
     next();
   } catch (e) {
+    console.log(e);
     next(e);
   }
 });

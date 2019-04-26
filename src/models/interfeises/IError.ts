@@ -6,5 +6,6 @@ export interface IError {
 }
 
 export interface IValidationError extends IError {
-  errors: [{ [key: string]: any }];
+  name?: string;
+  errors: { [key: string]: any };
 }

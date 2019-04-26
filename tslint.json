@@ -1,6 +1,7 @@
 {
     "extends": "tslint:latest",
     "rules": {
+        "object-literal-shorthand": false,
         "arrow-return-shorthand": true,
         "no-implicit-dependencies": false,
         "callable-types": true,
@@ -118,7 +119,7 @@
                 "singleline": "never",
                 "multiline": {
                     "objects": "never",
-                    "arrays": "always",
+                    "arrays": "never",
                     "functions": "never",
                     "typeLiterals": "ignore"
                 }

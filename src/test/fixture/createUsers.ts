@@ -1,19 +1,19 @@
 import mongoose from '../../libs/mongoose';
 
-function open() {
+export function open() {
   return new Promise((res, rej) => {
     mongoose.connection.on('open', () => {
-      console.log('open');
+      // console.log('open');
       res();
     });
   });
 }
 
-function dropDatabase() {
+export function dropDatabase() {
   return mongoose.connection.db.dropDatabase();
 }
 
-function createUsers(count: number = 5) {
+export function createUsers(count: number = 5) {
   return new Promise(async (res: any, rej) => {
     await import('../../models/app/User');
 
@@ -31,11 +31,11 @@ function createUsers(count: number = 5) {
   });
 }
 
-async function close() {
+export async function close() {
   await mongoose.disconnect();
 }
 
-export async function createDbUsers() {
+export async function populateDbUsers() {
   try {
     await open();
     await dropDatabase();

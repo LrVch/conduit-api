@@ -5,4 +5,6 @@ export interface IUser {
   image?: string;
   salt?: string;
   password?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

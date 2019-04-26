@@ -1,2 +1,2 @@
 export * from './common';
-export * from './handleVlidationErrors';
+export * from './errors';
