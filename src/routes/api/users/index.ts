@@ -1,7 +1,7 @@
 import express from 'express';
 import auth from '../../auth';
-import { getUser, updateUser } from './route';
-import { authenticateUser, createUser } from './routes';
+import { updateUser } from './route';
+import { authenticateUser, createUser, getUser } from './routes';
 
 const router = express.Router();
 

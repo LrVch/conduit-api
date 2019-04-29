@@ -1,26 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { IPayloadRequest, User } from '../../../models';
 
-export const getUser = async (
-  req: IPayloadRequest,
-  res: Response,
-  next: NextFunction
-) => {
-  const { id } = req.payload;
-
-  try {
-    const user = await User.findById(id);
-
-    if (!user) {
-      return res.sendStatus(401);
-    }
-
-    return res.json({ user: user.toAuthJSON() });
-  } catch (e) {
-    next(e);
-  }
-};
-
 export const updateUser = async (
   req: Request,
   res: Response,

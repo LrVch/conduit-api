@@ -18,4 +18,8 @@ export default class UserService {
   static findByEmail(email: string) {
     return User.findOne({ email });
   }
+
+  static findById(id: string) {
+    return User.findById(id);
+  }
 }

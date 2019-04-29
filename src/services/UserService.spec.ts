@@ -40,4 +40,25 @@ describe(`Userservice`, () => {
 
     expect(user).toBeDefined();
   });
+
+  test('It should throw an error while finding user by id', async () => {
+    try {
+      await Userservice.findById('badUser');
+    } catch (e) {
+      const { status, message } = e;
+      expect(status).toBe(500);
+      expect(message).toBe('Ops, something went wrong, cannot get user by id.');
+    }
+  });
+
+  test("It shouldn't find user by id", async () => {
+    const user = await Userservice.findById('unknowUser');
+    expect(user).toBeUndefined();
+  });
+
+  test('It should find user by id', async () => {
+    const user = await Userservice.findById('knowUser');
+
+    expect(user).toBeDefined();
+  });
 });

@@ -1,22 +1,3 @@
-// const defaultUser = {
-//   validPassword(password: string) {
-//     if (password === 'validPassword') {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   },
-//   toAuthJSON() {
-//     return {
-//       username: 'username',
-//       email: 'email',
-//       token: 'token',
-//       bio: '',
-//       image: ''
-//     };
-//   }
-// };
-
 export default class UserService {
   static async createAndSave({
     username,
@@ -40,10 +21,4 @@ export default class UserService {
       throw new Error('Cannot create user');
     }
   }
-
-  // static findByEmail(email: string) {
-  //   return {
-  //     user: defaultUser
-  //   };
-  // }
 }

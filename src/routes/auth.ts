@@ -4,9 +4,10 @@ import config from '../config';
 const secret = config.get('jwt:secret');
 
 export const getToken = (req: Request) => {
-  const [header = '', token = ''] = req.headers.authorization
-    ? req.headers.authorization.split(' ')
-    : [];
+  const [header = '', token = ''] =
+    req.headers && req.headers.authorization
+      ? req.headers.authorization.split(' ')
+      : [];
 
   if (header && token && (header === 'Token' || header === 'Bearer')) {
     return token;
