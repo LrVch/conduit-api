@@ -13,6 +13,6 @@ export const createUser = async (
 
     res.json({ user: user.toAuthJSON() });
   } catch (e) {
-    next(e);
+    return next(e);
   }
 };

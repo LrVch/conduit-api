@@ -55,23 +55,4 @@ export class User {
       }
     });
   }
-
-  static findById(id: string) {
-    return new Promise((res, rej) => {
-      if (id && id === 'knowUser') {
-        res(user);
-      }
-
-      if (id && id === 'unknowUser') {
-        res(undefined);
-      }
-
-      if (id && id === 'badUser') {
-        const error: any = new Error();
-        error.status = 500;
-        error.message = 'Ops, something went wrong, cannot get user by id.';
-        rej(error);
-      }
-    });
-  }
 }

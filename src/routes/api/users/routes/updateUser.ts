@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { IPayloadRequest, User } from '../../../models';
+import { IPayloadRequest } from '../../../../models';
+import UserService from '../../../../services/UserService';
 
 export const updateUser = async (
   req: Request,
@@ -7,7 +8,9 @@ export const updateUser = async (
   next: NextFunction
 ) => {
   try {
-    const user = await User.findById((req as IPayloadRequest).payload.id);
+    const user = await UserService.findById(
+      (req as IPayloadRequest).payload.id
+    );
 
     if (!user) {
       return res.sendStatus(404);
@@ -21,7 +24,7 @@ export const updateUser = async (
 
     try {
       await user.save();
-      res.json({ user: user.toAuthJSON() });
+      return res.json({ user: user.toAuthJSON() });
     } catch (e) {
       return next(e);
     }
